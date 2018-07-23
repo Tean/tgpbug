@@ -1,0 +1,270 @@
+
+Microsoft (R) Windows Debugger Version 10.0.17712.1000 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\user\Desktop\072418-11437-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 17134 MP (8 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Machine Name:
+Kernel base = 0xfffff803`6720d000 PsLoadedModuleList = 0xfffff803`675c71f0
+Debug session time: Tue Jul 24 01:20:30.517 2018 (UTC + 8:00)
+System Uptime: 1 days 2:03:25.353
+Loading Kernel Symbols
+.
+
+Press ctrl-c (cdb, kd, ntsd) or ctrl-break (windbg) to abort symbol loads that take too long.
+Run !sym noisy before .reload to track down problems loading symbols.
+
+..............................................................
+................................................................
+................................................................
+....................
+Loading User Symbols
+Loading unloaded module list
+...............................
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+Use !analyze -v to get detailed debugging information.
+
+BugCheck A, {8, 2, 0, fffff8036726cd8e}
+
+*** WARNING: Unable to verify timestamp for TesMon.sys
+*** ERROR: Module load completed but symbols could not be loaded for TesMon.sys
+Probably caused by : TesMon.sys ( TesMon+9762 )
+
+Followup:     MachineOwner
+---------
+
+nt!KeBugCheckEx:
+fffff803`673a5430 48894c2408      mov     qword ptr [rsp+8],rcx ss:0018:fffffd81`d8f9b790=000000000000000a
+0: kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+IRQL_NOT_LESS_OR_EQUAL (a)
+An attempt was made to access a pageable (or completely invalid) address at an
+interrupt request level (IRQL) that is too high.  This is usually
+caused by drivers using improper addresses.
+If a kernel debugger is available get the stack backtrace.
+Arguments:
+Arg1: 0000000000000008, memory referenced
+Arg2: 0000000000000002, IRQL
+Arg3: 0000000000000000, bitfield :
+	bit 0 : value 0 = read operation, 1 = write operation
+	bit 3 : value 0 = not an execute operation, 1 = execute operation (only on chips which support this level of status)
+Arg4: fffff8036726cd8e, address which referenced memory
+
+Debugging Details:
+------------------
+
+
+KEY_VALUES_STRING: 1
+
+
+STACKHASH_ANALYSIS: 1
+
+TIMELINE_ANALYSIS: 1
+
+
+DUMP_CLASS: 1
+
+DUMP_QUALIFIER: 400
+
+SYSTEM_MANUFACTURER:  MSI
+
+SYSTEM_PRODUCT_NAME:  MS-7758
+
+SYSTEM_SKU:  To be filled by O.E.M.
+
+SYSTEM_VERSION:  1.0
+
+BIOS_VENDOR:  American Megatrends Inc.
+
+BIOS_VERSION:  V1.10
+
+BIOS_DATE:  10/29/2013
+
+BASEBOARD_MANUFACTURER:  MSI
+
+BASEBOARD_PRODUCT:  ZH77A-G43 (MS-7758)
+
+BASEBOARD_VERSION:  1.0
+
+DUMP_FILE_ATTRIBUTES: 0x8
+  Kernel Generated Triage Dump
+
+DUMP_TYPE:  2
+
+BUGCHECK_P1: 8
+
+BUGCHECK_P2: 2
+
+BUGCHECK_P3: 0
+
+BUGCHECK_P4: fffff8036726cd8e
+
+READ_ADDRESS: fffff80367667388: Unable to get MiVisibleState
+Unable to get NonPagedPoolStart
+Unable to get NonPagedPoolEnd
+Unable to get PagedPoolStart
+Unable to get PagedPoolEnd
+ 0000000000000008 
+
+CURRENT_IRQL:  2
+
+FAULTING_IP: 
+nt!ExDeleteResourceLite+8e
+fffff803`6726cd8e 48395a08        cmp     qword ptr [rdx+8],rbx
+
+CPU_COUNT: 8
+
+CPU_MHZ: d48
+
+CPU_VENDOR:  GenuineIntel
+
+CPU_FAMILY: 6
+
+CPU_MODEL: 2a
+
+CPU_STEPPING: 7
+
+CPU_MICROCODE: 6,2a,7,0 (F,M,S,R)  SIG: 29'00000000 (cache) 29'00000000 (init)
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+CUSTOMER_CRASH_COUNT:  1
+
+DEFAULT_BUCKET_ID:  WIN8_DRIVER_FAULT
+
+BUGCHECK_STR:  AV
+
+PROCESS_NAME:  svchost.exe
+
+ANALYSIS_SESSION_HOST:  DESKTOP-O2S9AC6
+
+ANALYSIS_SESSION_TIME:  07-24-2018 01:39:52.0845
+
+ANALYSIS_VERSION: 10.0.17712.1000 amd64fre
+
+TRAP_FRAME:  fffffd81d8f9b8d0 -- (.trap 0xfffffd81d8f9b8d0)
+NOTE: The trap frame does not contain all registers.
+Some register values may be zeroed or incorrect.
+rax=0000000000000000 rbx=0000000000000000 rcx=0000000080000000
+rdx=0000000000000000 rsi=0000000000000000 rdi=0000000000000000
+rip=fffff8036726cd8e rsp=fffffd81d8f9ba60 rbp=ffffb98b33297080
+ r8=00000000000007d0  r9=0000000000000000 r10=fffff803662f5180
+r11=ffffb98b5034f570 r12=0000000000000000 r13=0000000000000000
+r14=0000000000000000 r15=0000000000000000
+iopl=0         nv up ei pl zr na po nc
+nt!ExDeleteResourceLite+0x8e:
+fffff803`6726cd8e 48395a08        cmp     qword ptr [rdx+8],rbx ds:00000000`00000008=????????????????
+Resetting default scope
+
+LAST_CONTROL_TRANSFER:  from fffff803673b5f69 to fffff803673a5430
+
+STACK_TEXT:  
+fffffd81`d8f9b788 fffff803`673b5f69 : 00000000`0000000a 00000000`00000008 00000000`00000002 00000000`00000000 : nt!KeBugCheckEx
+fffffd81`d8f9b790 fffff803`673b2be5 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiBugCheckDispatch+0x69
+fffffd81`d8f9b8d0 fffff803`6726cd8e : 00000000`544d6f6e 00000000`00000000 00000000`00000130 fffff803`6a1139ea : nt!KiPageFault+0x425
+fffffd81`d8f9ba60 fffff803`6a119762 : 00000000`005b9b56 ffffb98b`00000000 00000000`00000001 ffffb98b`5002c6e0 : nt!ExDeleteResourceLite+0x8e
+fffffd81`d8f9bab0 00000000`005b9b56 : ffffb98b`00000000 00000000`00000001 ffffb98b`5002c6e0 ffffb98b`36c75890 : TesMon+0x9762
+fffffd81`d8f9bab8 ffffb98b`00000000 : 00000000`00000001 ffffb98b`5002c6e0 ffffb98b`36c75890 fffff803`6a11a2ca : 0x5b9b56
+fffffd81`d8f9bac0 00000000`00000001 : ffffb98b`5002c6e0 ffffb98b`36c75890 fffff803`6a11a2ca ffffb98b`33297080 : 0xffffb98b`00000000
+fffffd81`d8f9bac8 ffffb98b`5002c6e0 : ffffb98b`36c75890 fffff803`6a11a2ca ffffb98b`33297080 ffffb98b`00000000 : 0x1
+fffffd81`d8f9bad0 ffffb98b`36c75890 : fffff803`6a11a2ca ffffb98b`33297080 ffffb98b`00000000 00000000`00000001 : 0xffffb98b`5002c6e0
+fffffd81`d8f9bad8 fffff803`6a11a2ca : ffffb98b`33297080 ffffb98b`00000000 00000000`00000001 00000000`00000000 : 0xffffb98b`36c75890
+fffffd81`d8f9bae0 ffffb98b`33297080 : ffffb98b`00000000 00000000`00000001 00000000`00000000 00000000`00000000 : TesMon+0xa2ca
+fffffd81`d8f9bae8 ffffb98b`00000000 : 00000000`00000001 00000000`00000000 00000000`00000000 00000000`00000000 : 0xffffb98b`33297080
+fffffd81`d8f9baf0 00000000`00000001 : 00000000`00000000 00000000`00000000 00000000`00000000 ffffb98b`5039a4a0 : 0xffffb98b`00000000
+fffffd81`d8f9baf8 00000000`00000000 : 00000000`00000000 00000000`00000000 ffffb98b`5039a4a0 fffff803`6750232e : 0x1
+
+
+THREAD_SHA1_HASH_MOD_FUNC:  946206842815a985220d1459030ffdd39208f36d
+
+THREAD_SHA1_HASH_MOD_FUNC_OFFSET:  9037bc4a7066d8740c130a185b1ea8e33023b5ac
+
+THREAD_SHA1_HASH_MOD:  61ba2b3d7d014cfd2c124d4a7702624b998a4ca7
+
+FOLLOWUP_IP: 
+TesMon+9762
+fffff803`6a119762 ??              ???
+
+SYMBOL_STACK_INDEX:  4
+
+SYMBOL_NAME:  TesMon+9762
+
+FOLLOWUP_NAME:  MachineOwner
+
+MODULE_NAME: TesMon
+
+IMAGE_NAME:  TesMon.sys
+
+DEBUG_FLR_IMAGE_TIMESTAMP:  5b47244d
+
+STACK_COMMAND:  .thread ; .cxr ; kb
+
+BUCKET_ID_FUNC_OFFSET:  9762
+
+FAILURE_BUCKET_ID:  AV_TesMon!unknown_function
+
+BUCKET_ID:  AV_TesMon!unknown_function
+
+PRIMARY_PROBLEM_CLASS:  AV_TesMon!unknown_function
+
+TARGET_TIME:  2018-07-23T17:20:30.000Z
+
+OSBUILD:  17134
+
+OSSERVICEPACK:  165
+
+SERVICEPACK_NUMBER: 0
+
+OS_REVISION: 0
+
+SUITE_MASK:  272
+
+PRODUCT_TYPE:  1
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+OSEDITION:  Windows 10 WinNt TerminalServer SingleUserTS
+
+OS_LOCALE:  
+
+USER_LCID:  0
+
+OSBUILD_TIMESTAMP:  2018-07-06 14:57:56
+
+ANALYSIS_SESSION_ELAPSED_TIME:  9a4
+
+ANALYSIS_SOURCE:  KM
+
+FAILURE_ID_HASH_STRING:  km:av_tesmon!unknown_function
+
+FAILURE_ID_HASH:  {638390cd-b006-4b2d-e935-ce4def079b82}
+
+Followup:     MachineOwner
+---------
+
